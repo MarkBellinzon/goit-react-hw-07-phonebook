@@ -5,32 +5,43 @@ This project was created with
 acquainted and configure additional features
 [refer to documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Creating a repository by template
+# Contact book
 
-Use this GoIT repository as a template for creating a repository
-of your project. To use it just tap the `«Use this template»` button and choose
-`«Create a new repository»` option, as you can see on the image below.
+Выполни рефакторинг кода приложения «Книга контактов» добавив управление
+состоянием при помощи библиотеки [Redux Toolkit](https://redux-toolkit.js.org/).
+Пусть Redux-состояние выглядит следующим образом.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+```json
+{
+  "contacts": [],
+  "filter": ""
+}
+```
 
-The page for creating a new repository will open on the next step. Fill out
-the Name field and make sure the repository is public, then click
-`«Create repository from template»` button.
+- Создай хранилище с 'configureStore()'
+- Используй функцию 'createSlice()'
+- Создай действия сохранения и удаления контакта, а также обновления фильтра
+- Свяжи React-компоненты с Redux-логикой при помощи хуков бибилиотеки
+  [react-redux](https://react-redux.js.org/)
+- Используй библиотеку
+  [Redux Persist](https://github.com/rt2zz/redux-persist#readme) для сохранения
+  массива контактов в локальное хранилище
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
-
-You now have a personal project repository, having a repository-template file 
-and folder structure. After that, you can work with it as you would with any 
-other private repository: clone it on your computer, write code, commit, and 
-send it to GitHub.
-
-## Preparing for coding
+## Preparing a new project
 
 1. Make sure you have an LTS version of Node.js installed on your computer.
    [Download and install](https://nodejs.org/en/) if needed.
-2. Install the project's base dependencies with the `npm install` command.
-3. Start development mode by running the `npm start` command.
-4. Go to [http://localhost:3000](http://localhost:3000) in your browser. This
+2. Clone this repository.
+3. Change the folder name from `react-homework-template` to the name of your
+   project.
+4. Create a new empty GitHub repository.
+5. Open the project in VSCode, launch the terminal and link the project to the
+   GitHub repository [according to the instructions]
+   (https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories
+   #changing-a-remote-repositorys-url).
+6. Install the project's base dependencies with the `npm install` command.
+7. Start development mode by running the `npm start` command.
+8. Go to [http://localhost:3000](http://localhost:3000) in your browser. This
    page will automatically reload after saving changes to the project files.
 
 ## Deploy
@@ -64,7 +75,7 @@ ID.
 More detailed information about the status can be viewed by clicking on the
 icon, and in the drop-down window, follow the link `Details`.
 
-![Deployment status](./assets/deploy-status.png)
+![Deployment status](./assets/status.png)
 
 ### Live page
 

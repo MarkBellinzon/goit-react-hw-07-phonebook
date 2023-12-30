@@ -1,3 +1,6 @@
+**Read in other languages: [Русский](README.md), [English](README.en.md),
+[Spanish](README.es.md).**
+
 # React homework template
 
 Этот проект был создан при помощи
@@ -5,44 +8,67 @@
 и настройки дополнительных возможностей
 [обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Создание репозитория по шаблону
+# Книга контактов
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+Выполни рефакторинг кода приложения «Книга контактов» используй библиотеку
+[Redux Toolkit](https://redux-toolkit.js.org/). Удали код отвечающий за хранение
+и чтение контактов из локального хранилища, и добавь взаимодействие с бэкендом
+для хранения контактов.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+## Бэкенд
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+Создай свой персональный бэкенд для разработки при помощи UI-сервиса
+[mockapi.io](https://mockapi.io/projects). Зарегистрируйся используя свой
+аккаунт GitHub. Создай ресурс `contacts` чтобы получить ендпоинт `/contacts`.
+Используй конструктор ресурса и опиши объект контакта как на иллюстрации.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+![Resource name](https://textbook.edu.goit.global/lms-react-homework/v1/img/hw-07/api.png)
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+## Форма состояния
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+Добавь в состояние Redux обработку индикатора загрузки и ошибки. Для этого
+измени форму состояния.
 
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
+```jsx
+{
+  contacts: [
+    items: [],
+    isLoading: false,
+    error: null
+  ],
+  filter: ""
+}
+```
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+## Операции
 
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
+Используй функцию
+[createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk) для
+объявления асинхронный генераторов экшенов и выполнения HTTP-запросов. Обработку
+экшенов и изменение данных в состоянии Redux сделай при помощи
+[createSlice](https://redux-toolkit.js.org/api/createSlice).
 
-## Подготовка к работе
+Объяви следующие операции:
+
+- `fetchContacts` - получение массива контактов (метод GET) запросом. Базовый
+  тип экшена `"contacts/fetchAll"`.
+- `addContact` - добавление контакта (метод POST).Базовый тип экшена
+  `"contacts/addContact"`.
+- `deleteContact` - удаление контакта (метод DELETE). Базовый тип экшена
+  `"contacts/deleteContact"`.
+
+## Подготовка нового проекта
 
 1. Убедись что на компьютере установлена LTS-версия Node.js.
    [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
+2. Клонируй этот репозиторий.
+3. Измени имя папки с `react-homework-template` на имя своего проекта.
+4. Создай новый пустой репозиторий на GitHub.
+5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
+   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
+6. Установи базовые зависимости проекта командой `npm install`.
+7. Запусти режим разработки, выполнив команду `npm start`.
+8. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
    Эта страница будет автоматически перезагружаться после сохранения изменений в
    файлах проекта.
 
@@ -75,7 +101,7 @@ GitHub.
 Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
 выпадающем окне перейти по ссылке `Details`.
 
-![Deployment status](./assets/deploy-status.png)
+![Deployment status](./assets/status.png)
 
 ### Живая страница
 
@@ -92,10 +118,11 @@ GitHub.
 
 Если приложение использует библиотеку `react-router-dom` для маршрутизации,
 необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
+`basename` точное название твоего репозитория. Слеши в начале и конце строки
+обязательны.
 
 ```jsx
-<BrowserRouter basename="/your_repo_name">
+<BrowserRouter basename="/your_repo_name/">
   <App />
 </BrowserRouter>
 ```
